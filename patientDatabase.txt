@@ -2,14 +2,15 @@
     {
         name: "John Smith",
         status: "Critical",
-        medications: "",
-        incidents: ""
+        medications: [""],
+        incidents: [""],
+
     }
     {
         name: "Jane Doe",
         status: "Healthy",
-        medications: "cocaine",
-        incidents: "slept with Nurse Joy"
-    
+        medications: ["cocaine"],
+        incidents: ["slept with Nurse Joy"],
+
     }
 ]
