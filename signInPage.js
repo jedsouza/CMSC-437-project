@@ -1,12 +1,13 @@
+/*
 function employee(username, password, isAdmin) {
     this.username = username;
     this.password = password;
     this.isAdmin = isAdmin;
 }
+*/
 
-var users = new Array();
-var testAdmin = new employee("testAdmin", "testAdmin", true);
-users.push(testAdmin);
+var users = JSON.parse(localStorage.getItem("userDatabase"));
+var tries = 5;
 
 function checkUser(username, password) {
     var returnVal = false;
@@ -26,7 +27,16 @@ function signInButton() {
     var userInput = document.getElementById("user").value;
     var passInput = document.getElementById("pass").value;
 
-    if(checkUser(userInput, passInput)) {
+    if(tries == 0) {
+        alert("Too many failed attempts; please contact an administrator.");
+    }
+
+    else if(checkUser(userInput, passInput)) {
         location.href = "menu.html"; //replace with final location
+    }
+
+    else {
+        alert("Incorrect credentials; try again.");
+        tries--;
     }
 }
