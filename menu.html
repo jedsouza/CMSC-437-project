@@ -4,8 +4,22 @@
     <title>Central ICU Patient eHealth and eMonitoring System</title>
 </head>
 <body>
-    <button></button>
-    <button></button>
+    <select id="dropdown">
+        <option value="default"></option>
+        <option value="callMort">Call Mortician</option>
+        <option value="fileded">File Time of Death Report</option>
+        <option value="notifyPhys">Notify Physicians</option>
+        <option value="ViewX">View Xrays</option>
+        <option value="addUser">Add new User</option>
+        <option value="AddPat">Add new Patient</option>
+        <option value="PatDed">Pull the Plug</option>
+        <option value="ViewAll">View Patient Profiles</option>
+        <option value="Perscribe medication">Add Medication</option>
+        <option value="ModO2">Change oxygen content</option>
+        <option value="ViewOne">Check One Patient</option>
+        <option value="ManVitals">Manual Vitals Input</option>
+    </select>
+    <button id="myButton" onclick="dropdownSelect()">Select</button>
 </body>
 
 </html>
