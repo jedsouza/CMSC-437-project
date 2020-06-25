@@ -1,13 +1,3 @@
-/*
-function employee(username, password, isNurse, isPhys, isAdmin) {
-    this.username = username;
-    this.password = password;
-    this.isNurse = isNurse;
-    this.isPhys = isPhys;
-    this.isAdmin = isAdmin;
-}
-*/
-
 function decrypt(data, key) {
     //tdb
 }
