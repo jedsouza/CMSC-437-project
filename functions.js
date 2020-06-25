@@ -10,6 +10,12 @@ function employee(username, password, isNurse, isPhys, isAdmin) {
     this.isAdmin = isAdmin;
 }
 
+function encrypt(data, key) {
+    
+}
+
+function patient(name, dob, )
+
 function dropdownSelect() {
     var selection = document.getElementById("dropdown").value;
 
