@@ -1,0 +1,15 @@
+[
+    {
+        name: "John Smith",
+        status: "Critical",
+        medications: "",
+        incidents: ""
+    }
+    {
+        name: "Jane Doe",
+        status: "Healthy",
+        medications: "cocaine",
+        incidents: "slept with Nurse Joy"
+    
+    }
+]
