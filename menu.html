@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Central ICU Patient eHealth and eMonitoring System</title>
-    <script src="functions.js"></script>
-</head>
-<body>
-    <div id="menu" onload="setOptions()">
-        <select id="dropdown">
-            <option value="default"></option>
-            <option value="callMort">Call Mortician</option> <!--in vitals-->
-            <option value="fileded">File Time of Death Report</option> <!--in vitals-->
-            <option value="notifyPhys">Notify Physicians</option> <!--in vitals-->
-            <option value="ViewX">View Xrays</option>
-            <option value="addUser">Add new User</option>
-            <option value="AddPat">Add new Patient</option>
-            <option value="PatDed">Pull the Plug</option> <!--in vitals-->
-            <option value="ViewAll">View Patient Profiles</option>
-            <option value="Perscribe medication">Add Medication</option> <!--in patient prof-->
-            <option value="ModO2">Change oxygen content</option> <!--in vitals-->
-            <option value="ViewOne">Check One Patient</option>
-            <option value="ManVitals">Manual Vitals Input</option>
-        </select>
+    <head>
+        <title>Central ICU Patient eHealth and eMonitoring System</title>
+        <script src="functions.js"></script>
+    </head>
+    <body>
+        <div id="menu" onload="setOptions()">
+            <select id="dropdown">
+                <option value="default"></option>
+                <option value="callMort">Call Mortician</option> <!--in vitals-->
+                <option value="fileded">File Time of Death Report</option> <!--in vitals-->
+                <option value="notifyPhys">Notify Physicians</option> <!--in vitals-->
+                <option value="ViewX">View Xrays</option>
+                <option value="addUser">Add new User</option>
+                <option value="AddPat">Add new Patient</option>
+                <option value="PatDed">Pull the Plug</option> <!--in vitals-->
+                <option value="ViewAll">View Patient Profiles</option>
+                <option value="Perscribe medication">Add Medication</option> <!--in patient prof-->
+                <option value="ModO2">Change oxygen content</option> <!--in vitals-->
+                <option value="ViewOne">Check One Patient</option>
+                <option value="ManVitals">Manual Vitals Input</option>
+            </select>
 
-        <button id="myButton" onclick="dropdownSelect()">Select</button>
-    </div> 
-</body>
-
+            <button id="myButton" onclick="dropdownSelect()">Select</button>
+        </div>
+    </body>
 </html>

@@ -1,3 +1,5 @@
+
+
 function notification(location) {
     this.location = location;
 }
@@ -10,11 +12,18 @@ function employee(username, password, isNurse, isPhys, isAdmin) {
     this.isAdmin = isAdmin;
 }
 
-function encrypt(data, key) {
-    
+function patient(name, status, medications, incidents, vitals, ventilator) {
+    this.name = name;
+    this.status = status;
+    this. medications = medications;
+    this.incidents = incidents;
+    this.vitals = vitals;
+    this.ventilator = ventilator;
 }
 
-function patient(name, dob, )
+function encrypt(data, key) {
+
+}
 
 function dropdownSelect() {
     var selection = document.getElementById("dropdown").value;
@@ -43,4 +52,8 @@ function notifyPhys() {
 
     var notifications = JSON.parse(localStorage.getItem("notification"));
     notifications.push(new notification(patient.name));
+}
+
+function setOptions() {
+
 }

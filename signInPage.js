@@ -14,6 +14,7 @@ var tries = 5;
 
 function checkUser(username, password) {
     var returnVal = false;
+    
     for(index = 0; index < users.length; index++) {
         if(users[index].username.equals(username) &&
         users[index].password.equals(password)) {
