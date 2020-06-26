@@ -3,8 +3,6 @@ function person(name, age) {
     this. age = age;
 }
 
-var intialArray = [new person("george", 40), new person("nick", 25)];
-
 function initializeData() {
     if(localStorage.getItem("people") == null) {
         var initialArray = [new person("george", 40), new person("nick", 25)];
