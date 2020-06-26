@@ -21,8 +21,27 @@ function patient(name, status, medications, incidents, vitals, ventilator) {
     this.ventilator = ventilator;
 }
 
-function encrypt(data, key) {
+function initializeData() {
+    if(localStorage.getItem("userDatabase") == null) {
+        var initialArray = [new employee("admin", "admin", false, true, true)];
+        localStorage.setItem("userDatabase", JSON.stringify(initialArray));
+    }
 
+    else {}
+
+    if(localStorage.getItem("patientDatabase") == null) {
+        var initialArray = []; //we may want to add test patients for debugging purposes
+        localStorage.setItem("patientDatabase", JSON.stringify(initialArray));
+    }
+
+    else {}
+
+    if(localStorage.getItem("notficationDatabase") == null) {
+        var initialArray = []; //test notifications for debugging purposes if needed
+        localStorage.setItem("notificationDatabase", JSON.stringify(initialArray));
+    }
+
+    else {}
 }
 
 function dropdownSelect() {
@@ -32,19 +51,7 @@ function dropdownSelect() {
         location.href = "https://health.maryland.gov/bom/Pages/home.aspx";
     }
 
-/*
-    else if(selection.equals("fileded")){
-        var patient = prompt("Please input the patient's name.");
-
-
-
-        var causeOfDeath = prompt("Please input the cause of death.");
-
-
-    }
-*/
-
-
+    
 }
 
 function notifyPhys() {
@@ -52,8 +59,4 @@ function notifyPhys() {
 
     var notifications = JSON.parse(localStorage.getItem("notification"));
     notifications.push(new notification(patient.name));
-}
-
-function setOptions() {
-
 }
