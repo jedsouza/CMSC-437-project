@@ -11,18 +11,29 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </head>
 
-    <body>
+    <body onload="setPrivileges()">
             <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                   Actions
                 </button>
                 <div class="dropdown-menu">
-                  <h5 class="dropdown-header">Nurse</h5>
-                  <a class="dropdown-item" href="#">Link 1</a>
-                  <a class="dropdown-item" href="#">Link 2</a>
-                  <a class="dropdown-item" href="#">Link 3</a>
-                  <h5 class="dropdown-header">Doctor</h5>
-                  <a class="dropdown-item" href="#">Another link</a>
+                    <button type="button" class="dropdown-item" id="a1">
+                        Action 1 no nurse
+                    </button>
+
+                    <button type="button" class="dropdown-item" id="a2">
+                        Action 2 no phys
+                    </button>
+
+                    <button type="button" class="dropdown-item" id="a3">
+                        Action 3 for all
+                    </button>
+
+                    <button type="button" class="dropdown-item" id="a4">
+                        Action 4 for all
+                    </button>
+
+                    <a class="dropdown-item" href="signInPage.html">Sign Out</a>
                 </div>
             </div>
     </body>
