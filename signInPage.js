@@ -44,13 +44,16 @@ function checkUser(username, password) {
     return returnVal;
 }
 
-function hidden() {
-  var x = document.getElementById("pass");
-  if (document.getElementByID("myCheck").checked = false;) {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
+function hidePassword() {
+    var x = document.getElementById("pass");
+
+    if (x.type === "password") {
+        x.type = "text";
+    }
+    
+    else {
+        x.type = "password";
+    }
 }
 
 //assumes username textfield has ID of 'user' and
