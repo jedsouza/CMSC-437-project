@@ -20,6 +20,14 @@ function patient(name, room, status, medications, incidents, vitals, ventilator)
     this.ventilator = ventilator;
 }
 
+function vitals(ECG, SpO2, CO2, BloodPressure, Pulse) {
+    this.ECG = ECG;
+    this.SpO2 = SpO2;
+    this.CO2 = CO2;
+    this.BloodPressure = BloodPressure;
+    this.Pulse = Pulse;
+}
+
 function setPrivileges() {
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -93,4 +101,7 @@ function checkNotifications() {
 function addPerscription(){
     var name = JSON.parse(localStorage.getItem("currentPatient"));
     name.medications.push(document.getElementById("meds").value); //meds is the name of the text file
+}
+
+function randomVitals() {
 }
