@@ -39,6 +39,10 @@ function initializeData() {
     }
 }
 
+function updateVitals() {
+}
+
+/*
 function dropdownSelect() {
     var selection = document.getElementById("dropdown").value;
 
@@ -48,19 +52,29 @@ function dropdownSelect() {
 
     
 }
+*/
 
 function notifyPhys() {
     alert("oh no");
 
     var notifications = JSON.parse(localStorage.getItem("notification"));
-    notifications.push(new notification(patient.name));
+    notifications.push(new notification(patient.room));
 }
 
 function checkNotifications() {
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
+    var notifications = JSON.parse(localStorage.getItem("notificationsDatabase"));
+    var alreadyResponding = false;
 
-    if(currentUser.isPhys == true) {
-        alert("Physician needed at room " + currentPatient.room + ".");
+    for(i = 0; i < notifications.length; i++) {
+        if(currentUser.isPhys == true && alreadyResponding == false) {
+            var responding = confirm("Physician needed at room " + notifications[0].location + ".");
+            if(responding == true) {
+                alreadyResponding == true;
+                notifications.splice(0, 1);
+            }
+        }
     }
+
+    localStorage.setItem("notificationDatabase", JSON.stringify(notifications));
 }
