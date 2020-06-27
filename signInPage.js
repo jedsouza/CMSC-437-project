@@ -12,7 +12,8 @@ function initializeData() {
         localStorage.setItem("userDatabase", JSON.stringify(initialArray));
     }
 
-    else {}
+    console.log("Data Initialized");
+    console.log(JSON.stringify(localStorage.getItem("userDatabase")));
 }
 
 function checkUser(username, password) {
@@ -23,10 +24,21 @@ function checkUser(username, password) {
     var returnVal = null;
     
     for(index = 0; index < users.length; index++) {
-        if(users[index].username.equals(username) &&
-        users[index].password.equals(password)) {
-            returnVal = user[index];
+        var currentUsername = users[index].username;
+        var currentPassword = users[index].password;
+
+        console.log(currentUsername);
+        console.log(currentPassword);
+        console.log(username);
+        console.log(password);
+
+        
+        if(currentUsername === username &&
+            currentPassword === password) {
+            console.log(users[index]);
+            returnVal = users[index];
         }
+        
     }
 
     return returnVal;
@@ -49,6 +61,7 @@ function signInButton() {
     var currentUser = checkUser(userInput, passInput);
 
     if(currentUser != null) {
+        console.log("signed in successfully.");
         location.href = "main.html"; //replace with final location
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
     }
