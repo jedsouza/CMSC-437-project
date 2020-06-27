@@ -1,0 +1,32 @@
+.dropdownButton {
+    background-color: purple;
+    color: white;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownMenu {
+    display: none;
+    position: absolute;
+    background-color: white;
+}
+
+.dropdownMenu button {
+    color: black;
+    display: block;
+}
+
+.dropdownMenu button:hover {
+    background-color: grey;
+}
+
+.dropdown:hover .dropdownMenu {
+    display: block;
+}
+
+.dropdown:hover .dropdownButton {
+    background-color: grey;
+}
