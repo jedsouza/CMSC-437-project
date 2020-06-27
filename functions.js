@@ -123,3 +123,13 @@ function randomVitals() {
 function uploadVitals() {
     localStorage.setItem("vitalsDatabase", randomVitals());
 }
+
+function checkVitals(){
+    var myVitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
+    myVitals.SPO2;
+    myVitals.Pulse;
+    myVitals.CO2;
+    myVitals.sysPressure;
+    myVitals.diaPressure;
+    myVitals.ECG;
+}
