@@ -22,17 +22,18 @@ function patient(name, room, status, medications, incidents, vitals, ventilator)
 
 function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
     this.ECG = ECG;
-    this.SPO2 = SpO2;
+    this.SPO2 = SPO2;
     this.CO2 = CO2;
     this.sysPressure = sysPressure;
     this.diaPressure = diaPressure;
     this.Pulse = Pulse;
 }
 
+var vitalsLoop = setInterval(uploadVitals, 1000);
+var vitalsFetch = setInterval(checkVitals, 1200);
+
 function setPrivileges() {
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-    console.log(currentUser);
 
     //use this to set what should be hidden for nurse
     if(currentUser.isNurse == true) {
@@ -62,9 +63,6 @@ function initializeData() {
     }
 
     setPrivileges();
-}
-
-function updateVitals() {
 }
 
 /*
@@ -117,19 +115,30 @@ function randomVitals() {
     var diaPressure = 70 + Math.random() * 15;
     var ECG = Math.random(); //tbd
 
-    return new vitals(ECG, SpO2, CO2, sysPressure, diaPressure, Pulse);
+    return new vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse);
 }
 
 function uploadVitals() {
     localStorage.setItem("vitalsDatabase", randomVitals());
+    console.log(localStorage.getItem("vitalsDatabase"));
+}
+
+function stopVitals() {
+    clearInterval(vitalsLoop);
 }
 
 function checkVitals(){
     var myVitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
-    myVitals.SPO2;
-    myVitals.Pulse;
-    myVitals.CO2;
-    myVitals.sysPressure;
-    myVitals.diaPressure;
-    myVitals.ECG;
+
+    document.getElementById("SPO2").value = myVitals.SPO2;
+    document.getElementById("Pulse").value = myVitals.Pulse;
+    document.getElementById("CO2").value = myVitals.CO2;
+    document.getElementById("sys").value = myVitals.sysPressure;
+    document.getElementById("dia").value = myVitals.diaPressure;
+    document.getElementById("ECG").value = myVitals.ECG;
+}
+
+function saveVitals() {
+    var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
+    currentPatient.vitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
 }
