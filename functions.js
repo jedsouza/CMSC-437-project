@@ -1,5 +1,3 @@
-
-
 function notification(location) {
     this.location = location;
 }
@@ -22,12 +20,23 @@ function patient(name, room, status, medications, incidents, vitals, ventilator)
     this.ventilator = ventilator;
 }
 
-function initializeData() {
-    if(localStorage.getItem("userDatabase") == null) {
-        var initialArray = [new employee("admin", "admin", false, true, true)];
-        localStorage.setItem("userDatabase", JSON.stringify(initialArray));
+function setPrivileges() {
+    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    console.log(currentUser);
+
+    //use this to set what should be hidden for nurse
+    if(currentUser.isNurse == true) {
+        //document.getElementById("a1").style.display = "none";
     }
 
+    //use this to set what should be hidden for physician
+    else if(currentUser.isPhys == true) {
+        //document.getElementById("a2").style.display = "none";
+    }
+}
+
+function initializeData() {
     if(localStorage.getItem("patientDatabase") == null) {
         var initialArray = []; //we may want to add test patients for debugging purposes
         localStorage.setItem("patientDatabase", JSON.stringify(initialArray));
@@ -37,6 +46,8 @@ function initializeData() {
         var initialArray = []; //test notifications for debugging purposes if needed
         localStorage.setItem("notificationDatabase", JSON.stringify(initialArray));
     }
+
+    setPrivileges();
 }
 
 function updateVitals() {
