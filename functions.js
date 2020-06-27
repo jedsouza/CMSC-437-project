@@ -20,7 +20,7 @@ function patient(name, room, status, medications, incidents, vitals, ventilator)
     this.ventilator = ventilator;
 }
 
-function vitals(ECG, SpO2, CO2, BloodPressure, Pulse) {
+function vitals(ECG, SpO2, CO2, sysPressure, diaPressure, Pulse) {
     this.ECG = ECG;
     this.SpO2 = SpO2;
     this.CO2 = CO2;
@@ -104,4 +104,12 @@ function addPerscription(){
 }
 
 function randomVitals() {
+    var SpO2 = 95 + Math.random() * 5;
+    var Pulse = 60 + Math.random() * 40;
+    var CO2 = 23 + Math. random() * 6;
+    var sysPressure = 100 + Math.random() * 25;
+    var diaPressure = 70 + Math.random() * 15;
+    var ECG = Math.random(); //tbd
+
+    return new vitals(ECG, SpO2, CO2, sysPressure, diaPressure, Pulse);
 }
