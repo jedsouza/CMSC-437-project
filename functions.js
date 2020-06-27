@@ -20,11 +20,12 @@ function patient(name, room, status, medications, incidents, vitals, ventilator)
     this.ventilator = ventilator;
 }
 
-function vitals(ECG, SpO2, CO2, sysPressure, diaPressure, Pulse) {
+function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
     this.ECG = ECG;
-    this.SpO2 = SpO2;
+    this.SPO2 = SpO2;
     this.CO2 = CO2;
-    this.BloodPressure = BloodPressure;
+    this.sysPressure = sysPressure;
+    this.diaPressure = diaPressure;
     this.Pulse = Pulse;
 }
 
@@ -53,6 +54,11 @@ function initializeData() {
     if(localStorage.getItem("notficationDatabase") == null) {
         var initialArray = []; //test notifications for debugging purposes if needed
         localStorage.setItem("notificationDatabase", JSON.stringify(initialArray));
+    }
+
+    if(localStorage.getItem("vitalsDatabase") == null) {
+        var initialVitals = randomVitals();
+        localStorage.setItem("vitalsDatabase", initialVitals);
     }
 
     setPrivileges();
@@ -104,7 +110,7 @@ function addPerscription(){
 }
 
 function randomVitals() {
-    var SpO2 = 95 + Math.random() * 5;
+    var SPO2 = 95 + Math.random() * 5;
     var Pulse = 60 + Math.random() * 40;
     var CO2 = 23 + Math. random() * 6;
     var sysPressure = 100 + Math.random() * 25;
@@ -112,4 +118,8 @@ function randomVitals() {
     var ECG = Math.random(); //tbd
 
     return new vitals(ECG, SpO2, CO2, sysPressure, diaPressure, Pulse);
+}
+
+function uploadVitals() {
+    localStorage.setItem("vitalsDatabase", randomVitals());
 }
