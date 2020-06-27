@@ -12,8 +12,9 @@ function employee(username, password, isNurse, isPhys, isAdmin) {
     this.isAdmin = isAdmin;
 }
 
-function patient(name, status, medications, incidents, vitals, ventilator) {
+function patient(name, room, status, medications, incidents, vitals, ventilator) {
     this.name = name;
+    this.room = room;
     this.status = status;
     this. medications = medications;
     this.incidents = incidents;
@@ -27,21 +28,15 @@ function initializeData() {
         localStorage.setItem("userDatabase", JSON.stringify(initialArray));
     }
 
-    else {}
-
     if(localStorage.getItem("patientDatabase") == null) {
         var initialArray = []; //we may want to add test patients for debugging purposes
         localStorage.setItem("patientDatabase", JSON.stringify(initialArray));
     }
 
-    else {}
-
     if(localStorage.getItem("notficationDatabase") == null) {
         var initialArray = []; //test notifications for debugging purposes if needed
         localStorage.setItem("notificationDatabase", JSON.stringify(initialArray));
     }
-
-    else {}
 }
 
 function dropdownSelect() {
@@ -59,4 +54,13 @@ function notifyPhys() {
 
     var notifications = JSON.parse(localStorage.getItem("notification"));
     notifications.push(new notification(patient.name));
+}
+
+function checkNotifications() {
+    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
+
+    if(currentUser.isPhys == true) {
+        alert("Physician needed at room " + currentPatient.room + ".");
+    }
 }
