@@ -46,7 +46,7 @@ function checkUser(username, password) {
 
 function hidden() {
   var x = document.getElementById("pass");
-  if (x.type === "password") {
+  if (document.getElementByID("myCheck").checked = false;) {
     x.type = "text";
   } else {
     x.type = "password";
