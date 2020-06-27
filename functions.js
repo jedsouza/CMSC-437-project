@@ -78,3 +78,8 @@ function checkNotifications() {
 
     localStorage.setItem("notificationDatabase", JSON.stringify(notifications));
 }
+
+function addPerscription(){
+    var name = JSON.parse(localStorage.getItem("currentPatient"));
+    name.medications.push(document.getElementById("meds").value); //meds is the name of the text file
+}
