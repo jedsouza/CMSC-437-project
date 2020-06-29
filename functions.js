@@ -30,7 +30,7 @@ function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
 }
 
 var vitalsLoop = setInterval(uploadVitals, 1000);
-//var vitalsFetch = setInterval(checkVitals, 1200);
+var vitalsFetch = setInterval(checkVitals, 1200);
 var notificationLoop = setInterval(checkNotifications, 1000);
 
 function setPrivileges() {
@@ -60,7 +60,7 @@ function initializeData() {
 
     if(localStorage.getItem("vitalsDatabase") == null) {
         var initialVitals = randomVitals();
-        localStorage.setItem("vitalsDatabase", initialVitals);
+        localStorage.setItem("vitalsDatabase", JSON.stringify(initialVitals));
     }
 
     setPrivileges();
@@ -71,6 +71,16 @@ function addEmployeePage() {
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
     }
+
+    document.getElementById("addEmployee").style.display = "block";
+}
+
+function addPatientPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
     document.getElementById("addEmployee").style.display = "block";
 }
 
