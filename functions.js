@@ -66,17 +66,13 @@ function initializeData() {
     setPrivileges();
 }
 
-/*
-function dropdownSelect() {
-    var selection = document.getElementById("dropdown").value;
-
-    if(selection.equals("callMort")) {
-        location.href = "https://health.maryland.gov/bom/Pages/home.aspx";
+function addEmployeePage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
     }
-
-    
+    document.getElementById("addEmployee").style.display = "block";
 }
-*/
 
 function notifyPhys() {
     if(localStorage.getItem("currentPatient") != null) {
@@ -144,9 +140,19 @@ function checkVitals(){
     document.getElementById("ECG").value = myVitals.ECG;
 }
 
+function vomitPatient() {
+    document.getElementById("thisPatient").value = localStorage.getItem("currentPatient");
+}
+
+function vomitVitals() {
+    document.getElemtnById("allVitals").value = localStorage.getItem("vitalsDatabase");
+}
+
 function saveVitals() {
     alert("Vitals have been saved.");
     var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
     currentPatient.vitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
 }
 
+function addEmployee() {
+}
