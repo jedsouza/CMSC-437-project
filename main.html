@@ -9,7 +9,17 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+        <style>
+          table {
+            font-size:30px;
+          }
+          td {
+            padding-right:10px;
+          }
+        </style>
     </head>
+
     <body onload="initializeData()">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Navigation</a>
@@ -20,59 +30,61 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li class="nav-item" id="alertPhysLink">
                     <a class="nav-link" href="#" style="color:red;">Alert Physician</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                <li class="nav-item" id="homeLink">
+                    <a class="nav-link" onClick="homePage()" href="#">Home</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">View Patient Vitals</a>
+                <li class="nav-item" id="vitalsLink">
+                    <a class="nav-link" onClick="patientVitalsPage()" href="#">View Patient Vitals</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">View Patient Records</a>
+                <li class="nav-item" id="infoLink">
+                    <a class="nav-link" onClick="patientInfoPage()" href="#">View Patient Records</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> View Patient X-Rays</a>
+                <li class="nav-item" id="XRayLink">
+                    <a class="nav-link" onClick="patientXRaysPage()" href="#"> View Patient X-Rays</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ventilator Settings</a>
+                <li class="nav-item" id="ventilatorLink">
+                    <a class="nav-link" onClick="ventilatorSettingsPage()" href="#">Ventilator Settings</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Add Patient</a>
+                <li class="nav-item" id="addPatientLink">
+                    <a class="nav-link" onClick="addPatientPage()" href="#">Add Patient</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Add Employee</a>
+                <li class="nav-item" id=addEmpLink">
+                    <a class="nav-link" onClick="addEmployeePage()" href="#">Add Employee</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" id="saveChangesLink">
                     <a class="nav-link" href="#">Save Changes</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" id="saveVitalsLink">
                     <a class="nav-link" href="#">Save Vitals</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" id="signOutLink">
                     <a class="nav-link" href="signInPage.html">Sign Out</a>
                 </li>
               </ul>
 
-              <form class="form-inline my-2 my-lg-0">
+              <form class="form-inline my-2 my-lg-0" id="patientSearch">
                 <input class="form-control mr-sm-2" type="search" placeholder="Patient Name or Room Number" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             </div>
           </nav>
 
-        <div id="home" class="homePage">
+        <br>
+
+        <div id="home" class="page">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="Patient Name or Room Number" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0 mr-auto" type="submit">Search</button>
@@ -81,8 +93,8 @@
             <br>
 
             <div>
-                <button class="btn btn-primary btn-block" type="button">Add Patient</button>
-                <button class="btn btn-primary btn-block" type="button">Add Employee</button>
+                <button class="btn btn-primary btn-block" type="button" onClick="addPatientPage()">Add Patient</button>
+                <button class="btn btn-primary btn-block" type="button"onClick="addEmployeePage()">Add Employee</button>
                 <a class="btn btn-primary btn-block" href="signInPage.html">Sign Out</a>
             </div>
         </div>
@@ -147,27 +159,51 @@
         </div>
 
         <div id="patientVitals" class="page">
-          <p id="allVitals"></p>
-          <button class="btn btn-primary btn-block" type="button" onclick="vomitVitals()">Submit</button>
-          <label>SPO: </label>
-          <p id="SPO"></p>
-          <label>Pulse: </label>
-          <p id="Pulse"></p>
-          <label>CO2: </label>
-          <p id="CO2"></p>
-          <label>Sys: </label>
-          <p id="sys"></p>
-          <label>Dia: </label>
-          <p id="dia"></p>
-          <label>ECG: </label>
-          <p id="ECG"></p>
+            <h1>Patient Vitals</h1>
+            <table>
+              <tr>
+                <td><p>ECG:</p></td><td><p id="ECG"></p></td>
+              </tr><tr>
+                <td><p>SPO2:</p><td><p id="SPO2"></p></td>
+              </tr><tr>
+                <td><p>CO2:</p><td><p id="CO2"></p></td>
+              </tr><tr>
+                <td><p>Sys:</p><td><p id="sys"></p></td>
+              </tr><tr>
+                <td><p>Dia:</p><td><p id="dia"></p></td>
+              </tr><tr>
+                <td><p>Pulse:</p><td><p id="Pulse"></p></td>
+              </tr>
+            </table>
         </div>
 
         <div id="patientInfo" class="page">
-          <div class="">
-            <p id="thisPatient"></p>
-            <button class="btn btn-primary btn-block" type="button" onclick="vomitPatients()">Submit</button>
-          </div>
+            <h1>Patient Info</h1>
+
+            <form>
+                <div class="form-group">
+                  <label for="patientName">Name</label>
+                  <input type="name" class="form-control" id="currentPatientName" placeholder="Patient Name">
+                </div>
+
+                <div class="form-group">
+                  <label for="patientStatus">Status</label>
+                  <select class="form-control" id="currentPatientStatus">
+                    <option>Stable</option>
+                    <option>Critical Condition</option>
+                    <option>Deceased</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="patientMeds">Patient Medications</label>
+                  <textarea class="form-control" id="currentPatientMeds" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="patientIncidents">Medically Relevant Incidents</label>
+                    <textarea class="form-control" id="currentPatientIncidents" rows="3"></textarea>
+                </div>
         </div>
 
         <div id="patientXRays" class="page">
@@ -198,9 +234,6 @@
 
         <div id="ventilatorSettings" class="page">
             <h1>Ventilator Settings</h1>
-            
-            
-
         </div>
     </body>
 </html>

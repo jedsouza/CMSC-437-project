@@ -30,7 +30,7 @@ function vitals(ECG, SPO, CO2, sysPressure, diaPressure, Pulse) {
 }
 
 var vitalsLoop = setInterval(uploadVitals, 1000);
-//var vitalsFetch = setInterval(checkVitals, 1200);
+var vitalsFetch = setInterval(checkVitals, 1200);
 var notificationLoop = setInterval(checkNotifications, 1000);
 
 function setPrivileges() {
@@ -60,10 +60,11 @@ function initializeData() {
 
     if(localStorage.getItem("vitalsDatabase") == null) {
         var initialVitals = randomVitals();
-        localStorage.setItem("vitalsDatabase", initialVitals);
+        localStorage.setItem("vitalsDatabase", JSON.stringify(initialVitals));
     }
 
     setPrivileges();
+    homePage();
 }
 
 function addEmployeePage() {
@@ -71,7 +72,144 @@ function addEmployeePage() {
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
     }
+
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+
     document.getElementById("addEmployee").style.display = "block";
+}
+
+function homePage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "list-item";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    
+
+    document.getElementById("home").style.display = "block";
+}
+
+function addPatientPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+
+    document.getElementById("addPatient").style.display = "block";
+}
+
+function patientVitalsPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+    document.getElementById("infoLink").style.display = "list-item";
+    document.getElementById("XRayLink").style.display = "list-item";
+    document.getElementById("saveVitalsLink").style.display = "list-item";
+    document.getElementById("alertPhysLink").style.display = "list-item";
+    document.getElementById("ventilatorLink").style.display = "list-item";
+
+    document.getElementById("patientVitals").style.display = "block";
+}
+
+function patientInfoPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+    document.getElementById("vitalsLink").style.display = "list-item";
+    document.getElementById("XRayLink").style.display = "list-item";
+    document.getElementById("alertPhysLink").style.display = "list-item";
+    document.getElementById("ventilatorLink").style.display = "list-item";
+    document.getElementById("saveChangesLink").style.display = "list-item";
+
+    document.getElementById("patientInfo").style.display = "block";
+}
+
+function patientXRaysPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+    document.getElementById("vitalsLink").style.display = "list-item";
+    document.getElementById("infoLink").style.display = "list-item";
+    document.getElementById("alertPhysLink").style.display = "list-item";
+    document.getElementById("ventilatorLink").style.display = "list-item";
+
+    document.getElementById("patientXRays").style.display = "block";
+}
+
+function ventilatorSettingsPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+    document.getElementById("vitalsLink").style.display = "list-item";
+    document.getElementById("infoLink").style.display = "list-item";
+    document.getElementById("XRayLink").style.display = "list-item";
+    document.getElementById("saveChangesLink").style.display = "list-item";
+    document.getElementById("alertPhysLink").style.display = "list-item";
+
+    document.getElementById("ventilatorSettings").style.display = "block";
 }
 
 function notifyPhys() {
@@ -131,13 +269,13 @@ function stopVitals() {
 
 function checkVitals(){
     var myVitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
-
-    document.getElementById("SPO").value = myVitals.SPO;
-    document.getElementById("Pulse").value = myVitals.Pulse;
-    document.getElementById("CO2").value = myVitals.CO2;
-    document.getElementById("sys").value = myVitals.sysPressure;
-    document.getElementById("dia").value = myVitals.diaPressure;
-    document.getElementById("ECG").value = myVitals.ECG;
+    console.log(myVitals.SPO2);
+    document.getElementById("SPO2").innerHTML = myVitals.SPO2;
+    document.getElementById("Pulse").innerHTML = myVitals.Pulse;
+    document.getElementById("CO2").innerHTML = myVitals.CO2;
+    document.getElementById("sys").innerHTML = myVitals.sysPressure;
+    document.getElementById("dia").innerHTML = myVitals.diaPressure;
+    document.getElementById("ECG").innerHTML = myVitals.ECG;
 }
 
 
