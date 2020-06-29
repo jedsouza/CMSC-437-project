@@ -85,6 +85,33 @@ function addEmployeePage() {
     document.getElementById("addEmployee").style.display = "block";
 }
 
+function addEmployee() {
+    var users = JSON.parse(localStorage.getItem("userDatabase"));
+    var username = document.getElementById("empName").value;
+    var password = document.getElementById("empPass").value;
+    var type = document.getElementById("empType").value;
+    
+    console.log("working");
+
+    if(type === "1") {
+        users.push(new employee(username, password, false, true, false));
+        console.log("added doctor");
+    }
+
+    else if(type === "2") {
+        users.push(new employee(username, password, true, false, false));
+        console.log("added nurse");
+    }
+
+    else if(type === "3") {
+        users.push(new employee(username, password, false, false, true));
+        console.log("added admin");
+    }
+
+    localStorage.setItem("userDatabase", JSON.stringify(users));
+    homePage();
+}
+
 function homePage() {
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
@@ -260,7 +287,6 @@ function randomVitals() {
 
 function uploadVitals() {
     localStorage.setItem("vitalsDatabase", JSON.stringify(randomVitals()));
-    console.log(localStorage.getItem("vitalsDatabase"));
 }
 
 function stopVitals() {
@@ -269,7 +295,6 @@ function stopVitals() {
 
 function checkVitals(){
     var myVitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
-    console.log(myVitals.SPO2);
     document.getElementById("SPO2").innerHTML = myVitals.SPO2;
     document.getElementById("Pulse").innerHTML = myVitals.Pulse;
     document.getElementById("CO2").innerHTML = myVitals.CO2;
@@ -295,9 +320,6 @@ function saveVitals() {
     alert("Vitals have been saved.");
     var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
     currentPatient.vitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
-}
-
-function addEmployee() {
 }
 
 function toggleVentilator() {
