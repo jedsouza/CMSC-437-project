@@ -73,6 +73,15 @@ function addEmployeePage() {
         pages[i].style.display = "none";
     }
 
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+
     document.getElementById("addEmployee").style.display = "block";
 }
 
@@ -107,6 +116,8 @@ function addPatientPage() {
 
     document.getElementById("patientSearch").style.display = "flex";
     document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+
     document.getElementById("addPatient").style.display = "block";
 }
 
@@ -115,6 +126,20 @@ function patientVitalsPage() {
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
     }
+
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+    document.getElementById("infoLink").style.display = "list-item";
+    document.getElementById("XRayLink").style.display = "list-item";
+    document.getElementById("saveVitalsLink").style.display = "list-item";
+    document.getElementById("alertPhysLink").style.display = "list-item";
+    document.getElementById("ventilatorLink").style.display = "list-item";
 
     document.getElementById("patientVitals").style.display = "block";
 }
@@ -125,6 +150,20 @@ function patientInfoPage() {
         pages[i].style.display = "none";
     }
 
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+    document.getElementById("vitalsLink").style.display = "list-item";
+    document.getElementById("XRayLink").style.display = "list-item";
+    document.getElementById("alertPhysLink").style.display = "list-item";
+    document.getElementById("ventilatorLink").style.display = "list-item";
+    document.getElementById("saveChangesLink").style.display = "list-item";
+
     document.getElementById("patientInfo").style.display = "block";
 }
 
@@ -134,6 +173,19 @@ function patientXRaysPage() {
         pages[i].style.display = "none";
     }
 
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+    document.getElementById("vitalsLink").style.display = "list-item";
+    document.getElementById("infoLink").style.display = "list-item";
+    document.getElementById("alertPhysLink").style.display = "list-item";
+    document.getElementById("ventilatorLink").style.display = "list-item";
+
     document.getElementById("patientXRays").style.display = "block";
 }
 
@@ -142,6 +194,20 @@ function ventilatorSettingsPage() {
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
     }
+
+    var links = document.getElementsByClassName("nav-item");
+    for(i=0; i < links.length; i++) {
+        links[i].style.display = "none";
+    }
+
+    document.getElementById("patientSearch").style.display = "flex";
+    document.getElementById("homeLink").style.display = "list-item";
+    document.getElementById("signOutLink").style.display = "list-item";
+    document.getElementById("vitalsLink").style.display = "list-item";
+    document.getElementById("infoLink").style.display = "list-item";
+    document.getElementById("XRayLink").style.display = "list-item";
+    document.getElementById("saveChangesLink").style.display = "list-item";
+    document.getElementById("alertPhysLink").style.display = "list-item";
 
     document.getElementById("ventilatorSettings").style.display = "block";
 }
