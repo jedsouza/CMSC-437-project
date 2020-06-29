@@ -234,6 +234,11 @@
 
         <div id="ventilatorSettings" class="page">
             <h1>Ventilator Settings</h1>
+            <button class="btn btn-primary btn-block" type="button"onClick="toggleVentilator()">Toggle Ventilator</button>
+            <p style="text-align:center;">Ventilator is now <span id="ventStatus">OFF</span>.</p>
+            <br>
+            <p style="text-align:center;font-size:larger;">Adjust oxygen percentage:</p>
+            <input type="range" min="1" max="100" value="50" class="slider" style="width:100%;height:25px;">
         </div>
     </body>
 </html>

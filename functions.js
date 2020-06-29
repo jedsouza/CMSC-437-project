@@ -299,3 +299,12 @@ function saveVitals() {
 
 function addEmployee() {
 }
+
+function toggleVentilator() {
+        if (document.getElementById("ventStatus").innerHTML == "OFF") {
+            document.getElementById("ventStatus").innerHTML = "ON";
+        } else {
+            document.getElementById("ventStatus").innerHTML = "OFF";
+        }
+    }
+    
