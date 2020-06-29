@@ -139,6 +139,7 @@ function checkVitals(){
 }
 
 function saveVitals() {
+    alert("Vitals have been saved.");
     var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
     currentPatient.vitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
 }

@@ -3,26 +3,112 @@
     <head>
         <title>Central ICU Patient eHealth and eMonitoring System</title>
         <script src="functions.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </head>
     <body onload="initializeData()">
-        <div id="menu" onload="setOptions()">
-            <select id="dropdown">
-                <option value="default"></option>
-                <option value="callMort">Call Mortician</option> <!--in vitals-->
-                <option value="fileded">File Time of Death Report</option> <!--in vitals-->
-                <option value="notifyPhys">Notify Physicians</option> <!--in vitals-->
-                <option value="ViewX">View Xrays</option>
-                <option value="addUser">Add new User</option>
-                <option value="AddPat">Add new Patient</option>
-                <option value="PatDed">Pull the Plug</option> <!--in vitals-->
-                <option value="ViewAll">View Patient Profiles</option>
-                <option value="Perscribe medication">Add Medication</option> <!--in patient prof-->
-                <option value="ModO2">Change oxygen content</option> <!--in vitals-->
-                <option value="ViewOne">Check One Patient</option>
-                <option value="ManVitals">Manual Vitals Input</option>
-            </select>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navigation</a>
 
-            <button id="myButton" onclick="dropdownSelect()">Select</button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color:red;">Alert Physician</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View Patient Vitals</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View Patient Records</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> View Patient X-Rays</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ventilator Settings</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Patient</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Employee</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Save Changes</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Save Vitals</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="signInPage.html">Sign Out</a>
+                </li>
+              </ul>
+
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Patient Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+
+        <div id="home">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="Patient Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 mr-auto" type="submit">Search</button>
+            </form>
+
+            <br>
+
+            <div>
+                <button class="btn btn-primary btn-block" type="button">Add Patient</button>
+                <button class="btn btn-primary btn-block" type="button">Add Employee</button>
+                <a class="btn btn-primary btn-block" href="signInPage.html">Sign Out</a>
+            </div>
+        </div>
+
+        <div id="addEmployee">
+
+        </div>
+
+        <div id="addPatient">
+
+        </div>
+
+        <div id="patientVitals">
+
+        </div>
+
+        <div id="patientInfo">
+
+        </div>
+
+        <div id="patientXRays">
+
+        </div>
+
+        <div id="ventilatorSettings">
+
         </div>
     </body>
 </html>
