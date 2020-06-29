@@ -31,18 +31,19 @@ function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
 
 var vitalsLoop = setInterval(uploadVitals, 1000);
 var vitalsFetch = setInterval(checkVitals, 1200);
+var notificationLoop = setInterval(checkNotifications, 1000);
 
 function setPrivileges() {
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     //use this to set what should be hidden for nurse
     if(currentUser.isNurse == true) {
-        //document.getElementById("a1").style.display = "none";
+        
     }
 
     //use this to set what should be hidden for physician
     else if(currentUser.isPhys == true) {
-        //document.getElementById("a2").style.display = "none";
+        
     }
 }
 
@@ -78,10 +79,15 @@ function dropdownSelect() {
 */
 
 function notifyPhys() {
-    alert("oh no");
+    if(localStorage.getItem("currentPatient") != null) {
+        alert("oh no");
+        var notifications = JSON.parse(localStorage.getItem("notification"));
+        notifications.push(new notification(patient.room));
+    } 
 
-    var notifications = JSON.parse(localStorage.getItem("notification"));
-    notifications.push(new notification(patient.room));
+    else {
+        alert("No patient has been accessed.");
+    }
 }
 
 function checkNotifications() {
@@ -143,3 +149,4 @@ function saveVitals() {
     var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
     currentPatient.vitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
 }
+
