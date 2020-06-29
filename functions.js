@@ -20,7 +20,7 @@ function patient(name, room, status, medications, incidents, vitals, ventilator)
     this.ventilator = ventilator;
 }
 
-function vitals(ECG, SPO, CO2, sysPressure, diaPressure, Pulse) {
+function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
     this.ECG = ECG;
     this.SPO2 = SPO2;
     this.CO2 = CO2;
