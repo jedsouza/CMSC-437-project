@@ -9,6 +9,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+        <style>
+          table {
+            font-size:30px;
+          }
+          td {
+            padding-right:10px;
+          }
+        </style>
     </head>
 
     <body onload="initializeData()">
@@ -151,13 +160,21 @@
 
         <div id="patientVitals" class="page">
             <h1>Patient Vitals</h1>
-
-            <p id="ECG"></p>
-            <p id="SPO2"></p>
-            <p id="CO2"></p>
-            <p id="sys"></p>
-            <p id="dia"></p>
-            <p id="Pulse"></p>
+            <table>
+              <tr>
+                <td><p>ECG:</p></td><td><p id="ECG"></p></td>
+              </tr><tr>
+                <td><p>SPO2:</p><td><p id="SPO2"></p></td>
+              </tr><tr>
+                <td><p>CO2:</p><td><p id="CO2"></p></td>
+              </tr><tr>
+                <td><p>Sys:</p><td><p id="sys"></p></td>
+              </tr><tr>
+                <td><p>Dia:</p><td><p id="dia"></p></td>
+              </tr><tr>
+                <td><p>Pulse:</p><td><p id="Pulse"></p></td>
+              </tr>
+            </table>
         </div>
 
         <div id="patientInfo" class="page">
