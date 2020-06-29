@@ -20,9 +20,9 @@ function patient(name, room, status, medications, incidents, vitals, ventilator)
     this.ventilator = ventilator;
 }
 
-function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
+function vitals(ECG, SPO, CO2, sysPressure, diaPressure, Pulse) {
     this.ECG = ECG;
-    this.SPO2 = SPO2;
+    this.SPO = SPO;
     this.CO2 = CO2;
     this.sysPressure = sysPressure;
     this.diaPressure = diaPressure;
@@ -110,14 +110,14 @@ function addPerscription(){
 }
 
 function randomVitals() {
-    var SPO2 = 95 + Math.random() * 5;
+    var SPO = 95 + Math.random() * 5;
     var Pulse = 60 + Math.random() * 40;
     var CO2 = 23 + Math. random() * 6;
     var sysPressure = 100 + Math.random() * 25;
     var diaPressure = 70 + Math.random() * 15;
     var ECG = Math.random(); //tbd
 
-    return new vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse);
+    return new vitals(ECG, SPO, CO2, sysPressure, diaPressure, Pulse);
 }
 
 function uploadVitals() {
@@ -132,7 +132,7 @@ function stopVitals() {
 function checkVitals(){
     var myVitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
 
-    document.getElementById("SPO2").value = myVitals.SPO2;
+    document.getElementById("SPO").value = myVitals.SPO;
     document.getElementById("Pulse").value = myVitals.Pulse;
     document.getElementById("CO2").value = myVitals.CO2;
     document.getElementById("sys").value = myVitals.sysPressure;
@@ -140,15 +140,18 @@ function checkVitals(){
     document.getElementById("ECG").value = myVitals.ECG;
 }
 
-/*
-function vomitPatient() {
-    document.getElementById("thisPatient").value = localStorage.getItem("currentPatient");
+
+function vomitPatients() {
+    document.getElementById("thisPatient").value = localStorage.getItem("patientDatabase");//untested
 }
 
 function vomitVitals() {
-    document.getElemtnById("allVitals").value = localStorage.getItem("vitalsDatabase");
+    var myPats = JSON.parse(localStorage.getItem("patientDatabase"));//untested code
+    for(i=0; i < myPats.length; i++){
+        document.getElementById("vitalName").value = myPats[i].name;
+        checkVitals();
+    }
 }
-*/
 
 function saveVitals() {
     alert("Vitals have been saved.");
