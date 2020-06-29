@@ -30,7 +30,7 @@ function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
 }
 
 var vitalsLoop = setInterval(uploadVitals, 1000);
-var vitalsFetch = setInterval(checkVitals, 1200);
+//var vitalsFetch = setInterval(checkVitals, 1200);
 var notificationLoop = setInterval(checkNotifications, 1000);
 
 function setPrivileges() {
@@ -64,6 +64,7 @@ function initializeData() {
     }
 
     setPrivileges();
+    homePage();
 }
 
 function addEmployeePage() {
@@ -75,13 +76,58 @@ function addEmployeePage() {
     document.getElementById("addEmployee").style.display = "block";
 }
 
+function homePage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    document.getElementById("home").style.display = "block";
+}
+
 function addPatientPage() {
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
     }
 
-    document.getElementById("addEmployee").style.display = "block";
+    document.getElementById("addPatient").style.display = "block";
+}
+
+function patientVitalsPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    document.getElementById("patientVitals").style.display = "block";
+}
+
+function patientInfoPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    document.getElementById("patientInfo").style.display = "block";
+}
+
+function patientXRaysPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    document.getElementById("patientXRays").style.display = "block";
+}
+
+function ventilatorSettingsPage() {
+    var pages = document.getElementsByClassName("page");
+    for(i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+
+    document.getElementById("ventilatorSettings").style.display = "block";
 }
 
 function notifyPhys() {
@@ -141,6 +187,7 @@ function stopVitals() {
 
 function checkVitals(){
     var myVitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
+    console.log(myVitals.SPO2);
 
     document.getElementById("SPO2").value = myVitals.SPO2;
     document.getElementById("Pulse").value = myVitals.Pulse;
