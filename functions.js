@@ -30,7 +30,7 @@ function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
 }
 
 var vitalsLoop = setInterval(uploadVitals, 1000);
-var vitalsFetch = setInterval(checkVitals, 1200);
+//var vitalsFetch = setInterval(checkVitals, 1200);
 var notificationLoop = setInterval(checkNotifications, 1000);
 
 function setPrivileges() {
@@ -88,7 +88,7 @@ function notifyPhys() {
 
 function checkNotifications() {
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    var notifications = JSON.parse(localStorage.getItem("notificationsDatabase"));
+    var notifications = JSON.parse(localStorage.getItem("notificationDatabase"));
     var alreadyResponding = false;
 
     for(i = 0; i < notifications.length; i++) {
@@ -121,7 +121,7 @@ function randomVitals() {
 }
 
 function uploadVitals() {
-    localStorage.setItem("vitalsDatabase", randomVitals());
+    localStorage.setItem("vitalsDatabase", JSON.stringify(randomVitals()));
     console.log(localStorage.getItem("vitalsDatabase"));
 }
 
@@ -140,6 +140,7 @@ function checkVitals(){
     document.getElementById("ECG").value = myVitals.ECG;
 }
 
+/*
 function vomitPatient() {
     document.getElementById("thisPatient").value = localStorage.getItem("currentPatient");
 }
@@ -147,6 +148,7 @@ function vomitPatient() {
 function vomitVitals() {
     document.getElemtnById("allVitals").value = localStorage.getItem("vitalsDatabase");
 }
+*/
 
 function saveVitals() {
     alert("Vitals have been saved.");
