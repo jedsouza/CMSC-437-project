@@ -29,6 +29,11 @@ function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
     this.Pulse = Pulse;
 }
 
+function ventilator(isOn, O2) {
+    this.isOn = isOn;
+    this.O2 = O2;
+}
+
 var vitalsLoop = setInterval(uploadVitals, 1000);
 var vitalsFetch = setInterval(checkVitals, 1200);
 var notificationLoop = setInterval(checkNotifications, 1000);
@@ -109,6 +114,25 @@ function addEmployee() {
     }
 
     localStorage.setItem("userDatabase", JSON.stringify(users));
+    homePage();
+}
+
+function addPatient() {
+    var patients = JSON.parse(localStorage.getItem("patientDatabase"));
+    var name = document.getElementById("patientName").value;
+    var room = document.getElementById("patientRoom").value;
+    var status = document.getElementById("patientStatus").value;
+    var medications = document.getElementById("patientMeds").value;
+    var incidents = document.getElementById("patientIncidents").value;
+    var defaultVitals = new vitals(0,0,0,0,0,0);
+    var defaultVentilator = new ventilator(false, 0);
+
+    patients.push(new patient(name, room, status, medications, incidents,
+    defaultVitals, defaultVentilator));
+
+    console.log(patients);
+
+    localStorage.setItem("patientDatabase", JSON.stringify(patients));
     homePage();
 }
 
