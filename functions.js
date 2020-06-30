@@ -346,11 +346,40 @@ function saveVitals() {
     currentPatient.vitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
 }
 
+function displayVitals() {
+    var vitals = JSON.parse(localStorage.getItem("currentPatient")).vitals;
+
+    document.getElementById("savedECG").innerHTML = vitals.ECG;
+    document.getElementById("savedSPO2").innerHTML = vitals.SPO2;
+    document.getElementById("savedCO2").innerHTML = vitals.CO2;
+    document.getElementById("savedSys").innerHTML = vitals.sys;
+    document.getElementById("savedDia").innerHTML = vitals.dia;
+    document.getElementById("savedPulse").innerHTML = vitals.Pulse;
+}
+
+function displayVentilator() {
+    //tbd
+}
+
+function displayPatientInfo() {
+    var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
+    
+    document.getElementById("currentPatientName").value = currentPatient.name;
+    document.getElementById("currentPatientRoom").value = currentPatient.room;
+    document.getElementById("currentPatientStatus").value = currentPatient.status;
+    document.getElementById("currentPatientMeds").value = currentPatient.medications;
+    document.getElementById("currentPatientIncidents").value = currentPatient.incidents;
+}
+
 function toggleVentilator() {
-        if (document.getElementById("ventStatus").innerHTML == "OFF") {
-            document.getElementById("ventStatus").innerHTML = "ON";
-        } else {
-            document.getElementById("ventStatus").innerHTML = "OFF";
-        }
-    }
+    if (document.getElementById("ventStatus").innerHTML == "OFF") {
+        document.getElementById("ventStatus").innerHTML = "ON";
+        JSON.parse(localStorage.getItem("currentPatient")).ventilator.isOn = true;
+    } 
+    
+    else {
+        document.getElementById("ventStatus").innerHTML = "OFF";
+        JSON.parse(localStorage.getItem("currentPatient")).ventilator.isOn = false;
+    }
+}
     
