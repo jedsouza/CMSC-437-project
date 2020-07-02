@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item" id="alertPhysLink">
-                    <a class="nav-link" href="#" style="color:red;">Alert Physician</a>
+                    <a class="nav-link" onClick="notifyPhys()" href="#" style="color:red;">Alert Physician</a>
                 </li>
 
                 <li class="nav-item" id="homeLink">
@@ -67,7 +67,7 @@
                 </li>
 
                 <li class="nav-item" id="saveVitalsLink">
-                    <a class="nav-link" href="#">Save Vitals</a>
+                    <a class="nav-link" href="#" onclick="saveVitals()">Save Vitals</a>
                 </li>
 
                 <li class="nav-item" id="signOutLink">
@@ -75,9 +75,9 @@
                 </li>
               </ul>
 
-              <form class="form-inline my-2 my-lg-0" id="patientSearch">
-                <input class="form-control mr-sm-2" type="search" placeholder="Patient Name or Room Number" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Patient Name or Room Number" aria-label="Search" id="patientSearch">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="searchPatientNavBar()">Search</button>
               </form>
             </div>
           </nav>
@@ -86,8 +86,8 @@
 
         <div id="home" class="page">
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="Patient Name or Room Number" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0 mr-auto" type="submit">Search</button>
+                <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="Patient Name or Room Number" aria-label="Search" id="patientSearchMenu">
+                <button class="btn btn-outline-success my-2 my-sm-0 mr-auto" type="submit" onclick="searchPatientMenu()">Search</button>
             </form>
 
             <br>
