@@ -149,11 +149,10 @@ function homePage() {
     
     var links = document.getElementsByClassName("nav-item");
     for(i=0; i < links.length; i++) {
-        links[i].style.display = "list-item";
+        links[i].style.display = "none";
     }
 
     document.getElementById("patientSearch").style.display = "flex";
-    
 
     document.getElementById("home").style.display = "block";
 }
