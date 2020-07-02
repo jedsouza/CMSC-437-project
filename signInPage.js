@@ -8,7 +8,7 @@ function employee(username, password, isNurse, isPhys, isAdmin) {
 
 function initializeData() {
     if(localStorage.getItem("userDatabase") == null) {
-        var initialArray = [new employee("admin", "admin", false, true, true)];
+        var initialArray = [new employee("admin", "admin", false, false, true)];
         localStorage.setItem("userDatabase", JSON.stringify(initialArray));
     }
 
