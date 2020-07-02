@@ -267,7 +267,7 @@ function ventilatorSettingsPage() {
 
 function notifyPhys() {
     if(localStorage.getItem("currentPatient") != null) {
-        alert("oh no");
+        alert("Physician notified.");
         var notifications = JSON.parse(localStorage.getItem("notification"));
         notifications.push(new notification(patient.room));
     } 
