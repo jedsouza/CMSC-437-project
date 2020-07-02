@@ -36,7 +36,7 @@ function ventilator(isOn, O2) {
 
 var vitalsLoop = setInterval(uploadVitals, 1000);
 var vitalsFetch = setInterval(checkVitals, 1200);
-var notificationLoop = setInterval(checkNotifications, 1000);
+var notificationLoop = setInterval(checkNotifications, 5000);
 
 function setPrivileges() {
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -58,7 +58,10 @@ function initializeData() {
         localStorage.setItem("patientDatabase", JSON.stringify(initialArray));
     }
 
-    if(localStorage.getItem("notficationDatabase") == null) {
+    if("notificationDatabase" in localStorage) {
+    }
+
+    else {
         var initialArray = []; //test notifications for debugging purposes if needed
         localStorage.setItem("notificationDatabase", JSON.stringify(initialArray));
     }
@@ -67,6 +70,7 @@ function initializeData() {
         var initialVitals = randomVitals();
         localStorage.setItem("vitalsDatabase", JSON.stringify(initialVitals));
     }
+    
 
     setPrivileges();
     homePage();
@@ -125,7 +129,7 @@ function addPatient() {
     var medications = document.getElementById("patientMeds").value;
     var incidents = document.getElementById("patientIncidents").value;
     var defaultVitals = new vitals(0,0,0,0,0,0);
-    var defaultVentilator = new ventilator(false, 0);
+    var defaultVentilator = new ventilator("OFF", 0);
 
     patients.push(new patient(name, room, status, medications, incidents,
     defaultVitals, defaultVentilator));
@@ -243,6 +247,8 @@ function patientXRaysPage() {
 }
 
 function ventilatorSettingsPage() {
+    displayVentilator();
+
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
@@ -268,8 +274,12 @@ function ventilatorSettingsPage() {
 function notifyPhys() {
     if(localStorage.getItem("currentPatient") != null) {
         alert("Physician notified.");
-        var notifications = JSON.parse(localStorage.getItem("notification"));
-        notifications.push(new notification(patient.room));
+
+        var notifications = JSON.parse(localStorage.getItem("notificationDatabase"));
+        var room = JSON.parse(localStorage.getItem("currentPatient")).room;
+
+        notifications.push(new notification(room));
+        localStorage.setItem("notificationDatabase", JSON.stringify(notifications));
     } 
 
     else {
@@ -295,11 +305,6 @@ function checkNotifications() {
     localStorage.setItem("notificationDatabase", JSON.stringify(notifications));
 }
 
-function addPerscription(){
-    var name = JSON.parse(localStorage.getItem("currentPatient"));
-    name.medications.push(document.getElementById("meds").value); //meds is the name of the text file
-}
-
 function randomVitals() {
     var SPO2 = 95 + Math.random() * 5;
     var Pulse = 60 + Math.random() * 40;
@@ -313,10 +318,6 @@ function randomVitals() {
 
 function uploadVitals() {
     localStorage.setItem("vitalsDatabase", JSON.stringify(randomVitals()));
-}
-
-function stopVitals() {
-    clearInterval(vitalsLoop);
 }
 
 function checkVitals(){
@@ -336,6 +337,33 @@ function saveVitals() {
     alert("Vitals have been saved.");
 }
 
+function saveChanges() {
+    var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
+    var name = currentPatient.name;
+    var room = currentPatient.room;
+
+    currentPatient.name = document.getElementById("currentPatientName").value;
+    currentPatient.room = document.getElementById("currentPatientRoom").value;
+    currentPatient.status = document.getElementById("currentPatientStatus").value;
+    currentPatient.medications = document.getElementById("currentPatientMeds").value;
+    currentPatient.incidents = document.getElementById("currentPatientIncidents").value;
+    currentPatient.ventilator.isOn = document.getElementById("ventStatus").innerHTML;
+    currentPatient.ventilator.O2 = document.getElementById("oxPercent").value;
+
+    var patientDatabase = JSON.parse(localStorage.getItem("patientDatabase"));
+
+    for(i = 0; i < patientDatabase.length; i++) {
+        if(patientDatabase[i].name === name && patientDatabase[i].room === room) {
+            patientDatabase[i] = currentPatient;
+        }
+    }
+
+    localStorage.setItem("currentPatient", JSON.stringify(currentPatient));
+    localStorage.setItem("patientDatabase", JSON.stringify(patientDatabase));
+
+    alert("Changes have been saved.");
+}
+
 function displayVitals() {
     var vitals = JSON.parse(localStorage.getItem("currentPatient")).vitals;
 
@@ -348,7 +376,10 @@ function displayVitals() {
 }
 
 function displayVentilator() {
-    //tbd
+    var ventilator = JSON.parse(localStorage.getItem("currentPatient")).ventilator;
+
+    document.getElementById("ventStatus").innerHTML = ventilator.isOn;
+    document.getElementById("oxPercent").value = ventilator.O2;
 }
 
 function displayPatientInfo() {
