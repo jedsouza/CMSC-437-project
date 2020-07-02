@@ -43,12 +43,14 @@ function setPrivileges() {
 
     //use this to set what should be hidden for nurse
     if(currentUser.isNurse == true) {
-        
+        document.getElementById("addEmployee").style.display = 'none';
+        document.getElementById("EmployeeButton").style.display = 'none';
     }
 
     //use this to set what should be hidden for physician
     else if(currentUser.isPhys == true) {
-        
+        document.getElementById("addEmployee").style.display = 'none';
+        document.getElementById("EmployeeButton").style.display = 'none';
     }
 }
 
