@@ -196,6 +196,8 @@ function patientVitalsPage() {
 }
 
 function patientInfoPage() {
+    displayPatientInfo();
+
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
@@ -327,23 +329,11 @@ function checkVitals(){
     document.getElementById("ECG").innerHTML = myVitals.ECG;
 }
 
-
-function vomitPatients() {
-    document.getElementById("thisPatient").value = localStorage.getItem("patientDatabase");//untested
-}
-
-function vomitVitals() {
-    var myPats = JSON.parse(localStorage.getItem("patientDatabase"));//untested code
-    for(i=0; i < myPats.length; i++){
-        document.getElementById("vitalName").value = myPats[i].name;
-        checkVitals();
-    }
-}
-
 function saveVitals() {
-    alert("Vitals have been saved.");
     var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
     currentPatient.vitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
+    localStorage.setItem("currentPatient", JSON.stringify(currentPatient));
+    alert("Vitals have been saved.");
 }
 
 function displayVitals() {
@@ -352,8 +342,8 @@ function displayVitals() {
     document.getElementById("savedECG").innerHTML = vitals.ECG;
     document.getElementById("savedSPO2").innerHTML = vitals.SPO2;
     document.getElementById("savedCO2").innerHTML = vitals.CO2;
-    document.getElementById("savedSys").innerHTML = vitals.sys;
-    document.getElementById("savedDia").innerHTML = vitals.dia;
+    document.getElementById("savedSys").innerHTML = vitals.sysPressure;
+    document.getElementById("savedDia").innerHTML = vitals.diaPressure;
     document.getElementById("savedPulse").innerHTML = vitals.Pulse;
 }
 
@@ -369,6 +359,8 @@ function displayPatientInfo() {
     document.getElementById("currentPatientStatus").value = currentPatient.status;
     document.getElementById("currentPatientMeds").value = currentPatient.medications;
     document.getElementById("currentPatientIncidents").value = currentPatient.incidents;
+
+    displayVitals();
 }
 
 function toggleVentilator() {
@@ -381,5 +373,47 @@ function toggleVentilator() {
         document.getElementById("ventStatus").innerHTML = "OFF";
         JSON.parse(localStorage.getItem("currentPatient")).ventilator.isOn = false;
     }
+}
+
+function searchPatientNavBar() {
+    var input = document.getElementById("patientSearch").value;
+    var patientDatabase = JSON.parse(localStorage.getItem("patientDatabase"));
+    var isFound = false;
+
+    for(i = 0; i < patientDatabase.length; i++) {
+        if(input === patientDatabase[i].name || input === patientDatabase[i].room) {
+            localStorage.setItem("currentPatient", JSON.stringify(patientDatabase[i]));
+            isFound = true;
+        }
+    }
+
+    if(!isFound) {
+        alert("No patient found under this name or room number.");
+    }
+
+    else {
+        patientVitalsPage();
+    }
+}
+
+function searchPatientMenu() {
+    var input = document.getElementById("patientSearchMenu").value;
+    var patientDatabase = JSON.parse(localStorage.getItem("patientDatabase"));
+    var isFound = false;
+
+    for(i = 0; i < patientDatabase.length; i++) {
+        if(input === patientDatabase[i].name || input === patientDatabase[i].room) {
+            localStorage.setItem("currentPatient", JSON.stringify(patientDatabase[i]));
+            isFound = true;
+        }
+    }
+
+    if(!isFound) {
+        alert("No patient found under this name or room number.");
+    }
+
+    else {
+        patientVitalsPage();
+    }
 }
     
