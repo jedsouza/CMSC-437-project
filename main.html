@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <!--scripts for sign in located in signInPage.js. All others in functions.js-->
         <title>Central ICU Patient eHealth and eMonitoring System</title>
         <script src="functions.js"></script>
         <meta charset="utf-8">
@@ -9,7 +10,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+        <!--table style set to be able to read patient vitals-->
         <style>
           table {
             font-size:30px;
@@ -19,8 +20,9 @@
           }
         </style>
     </head>
-
+    <!--initialize data on every load-->
     <body onload="initializeData()">
+      <!--functioning navbar that is collapsible, explanations of functionality in functions.js file-->
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <a class="navbar-brand" href="#">Navigation</a>
 
@@ -74,7 +76,7 @@
                     <a class="nav-link" href="signInPage.html">Sign Out</a>
                 </li>
               </ul>
-
+              <!--form for searching patients by name-->
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Patient Name or Room Number" aria-label="Search" id="patientSearch">
                 <button class="btn btn-primary my-2 my-sm-0" type="button" onclick="searchPatientNavBar()">Search</button>
@@ -83,7 +85,7 @@
           </nav>
 
         <br>
-
+        <!--homepage-->
         <div id="home" class="page">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="Patient Name or Room Number" aria-label="Search" id="patientSearchMenu">
@@ -91,14 +93,14 @@
             </form>
 
             <br>
-
+            <!--adding patients-->
             <div>
                 <button class="btn btn-primary btn-block" type="button" onClick="addPatientPage()">Add Patient</button>
                 <button id="EmployeeButton" class="btn btn-primary btn-block" type="button"onClick="addEmployeePage()">Add Employee</button>
                 <a class="btn btn-primary btn-block" href="signInPage.html">Sign Out</a>
             </div>
         </div>
-
+        <!--page for adding members-->
         <div id="addEmployee" class="page">
             <h1 style="text-align: center;">New Employee Form</h1>
 
@@ -125,7 +127,7 @@
 
             <button class="btn btn-primary btn-block" type="button" onclick="addEmployee()">Submit</button>
         </div>
-
+        <!--adding the clientele into system page-->
         <div id="addPatient" class="page">
             <h1 style="text-align: center;">New Patient Form</h1>
 
@@ -181,7 +183,7 @@
               </tr>
             </table>
         </div>
-
+        <!--patient info can be found on either of the next pages depending on what is being searched for-->
         <div id="patientInfo" class="page">
             <h1>Patient Info</h1>
 

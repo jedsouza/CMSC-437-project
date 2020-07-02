@@ -44,7 +44,7 @@ function checkUser(username, password) {
     return returnVal;
 }
 
-function hidePassword() {
+function hidePassword() {//function hides password if checkbox toggled 
     var x = document.getElementById("pass");
 
     if (x.type === "password") {
@@ -72,13 +72,13 @@ function signInButton() {
 
     var currentUser = checkUser(userInput, passInput);
 
-    if(currentUser != null) {
+    if(currentUser != null) {//success case
         console.log("signed in successfully.");
         location.href = "main.html"; //replace with final location
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
     }
 
-    else {
+    else {//failed case
         alert("Incorrect credentials; try again.");
         //tries--;
     }

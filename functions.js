@@ -1,9 +1,9 @@
 function notification(location) {
-    this.location = location;
+    this.location = location; //used to store intradepartmental messages in object
 }
 
 function employee(username, password, isNurse, isPhys, isAdmin) {
-    this.username = username;
+    this.username = username; //used to store employee data in an object
     this.password = password;
     this.isNurse = isNurse;
     this.isPhys = isPhys;
@@ -11,7 +11,7 @@ function employee(username, password, isNurse, isPhys, isAdmin) {
 }
 
 function patient(name, room, status, medications, incidents, vitals, ventilator) {
-    this.name = name;
+    this.name = name; //used to store patient data in an object
     this.room = room;
     this.status = status;
     this. medications = medications;
@@ -21,7 +21,7 @@ function patient(name, room, status, medications, incidents, vitals, ventilator)
 }
 
 function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
-    this.ECG = ECG;
+    this.ECG = ECG; //used to store vitals in a json
     this.SPO2 = SPO2;
     this.CO2 = CO2;
     this.sysPressure = sysPressure;
@@ -30,16 +30,16 @@ function vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse) {
 }
 
 function ventilator(isOn, O2) {
-    this.isOn = isOn;
+    this.isOn = isOn;//boolean value for ventilator and oxygen output
     this.O2 = O2;
 }
 
-var vitalsLoop = setInterval(uploadVitals, 1000);
+var vitalsLoop = setInterval(uploadVitals, 1000);//run functions every x-times
 var vitalsFetch = setInterval(checkVitals, 1200);
 var notificationLoop = setInterval(checkNotifications, 5000);
 
 function setPrivileges() {
-    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    var currentUser = JSON.parse(localStorage.getItem("currentUser"));//used to hide admin functions from others
 
     //use this to set what should be hidden for nurse
     if(currentUser.isNurse == true) {
@@ -78,7 +78,7 @@ function initializeData() {
     homePage();
 }
 
-function addEmployeePage() {
+function addEmployeePage() {//admin functions page of adding and employees
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
@@ -96,7 +96,7 @@ function addEmployeePage() {
     document.getElementById("addEmployee").style.display = "block";
 }
 
-function addEmployee() {
+function addEmployee() {//scripted admin functions
     var users = JSON.parse(localStorage.getItem("userDatabase"));
     var username = document.getElementById("empName").value;
     var password = document.getElementById("empPass").value;
@@ -106,7 +106,7 @@ function addEmployee() {
 
     if(type === "1") {
         users.push(new employee(username, password, false, true, false));
-        console.log("added doctor");
+        console.log("added doctor");//pushing different types of workers into local system
     }
 
     else if(type === "2") {
@@ -124,7 +124,7 @@ function addEmployee() {
 }
 
 function addPatient() {
-    var patients = JSON.parse(localStorage.getItem("patientDatabase"));
+    var patients = JSON.parse(localStorage.getItem("patientDatabase"));//adding patient accounts
     var name = document.getElementById("patientName").value;
     var room = document.getElementById("patientRoom").value;
     var status = document.getElementById("patientStatus").value;
@@ -143,7 +143,7 @@ function addPatient() {
 }
 
 function homePage() {
-    var pages = document.getElementsByClassName("page");
+    var pages = document.getElementsByClassName("page");//home page functionality
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
     }
@@ -159,7 +159,7 @@ function homePage() {
     document.getElementById("home").style.display = "block";
 }
 
-function addPatientPage() {
+function addPatientPage() {//adding patient page
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
@@ -177,7 +177,7 @@ function addPatientPage() {
     document.getElementById("addPatient").style.display = "block";
 }
 
-function patientVitalsPage() {
+function patientVitalsPage() {//vitals viewing page, read in from random number updated file
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
@@ -201,7 +201,7 @@ function patientVitalsPage() {
 }
 
 function patientInfoPage() {
-    displayPatientInfo();
+    displayPatientInfo();//reading patient info
 
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
@@ -225,7 +225,7 @@ function patientInfoPage() {
     document.getElementById("patientInfo").style.display = "block";
 }
 
-function patientXRaysPage() {
+function patientXRaysPage() {//reading xrays 
     var pages = document.getElementsByClassName("page");
     for(i = 0; i < pages.length; i++) {
         pages[i].style.display = "none";
@@ -247,7 +247,7 @@ function patientXRaysPage() {
     document.getElementById("patientXRays").style.display = "block";
 }
 
-function ventilatorSettingsPage() {
+function ventilatorSettingsPage() {//page made to change ventilator settings
     displayVentilator();
 
     var pages = document.getElementsByClassName("page");
@@ -272,7 +272,7 @@ function ventilatorSettingsPage() {
     document.getElementById("ventilatorSettings").style.display = "block";
 }
 
-function notifyPhys() {
+function notifyPhys() {//messages sent between staff
     if(localStorage.getItem("currentPatient") != null) {
         alert("Physician notified.");
 
@@ -288,7 +288,7 @@ function notifyPhys() {
     }
 }
 
-function checkNotifications() {
+function checkNotifications() {//how to check if any messages sent to person
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
     var notifications = JSON.parse(localStorage.getItem("notificationDatabase"));
     var alreadyResponding = false;
@@ -306,7 +306,7 @@ function checkNotifications() {
     localStorage.setItem("notificationDatabase", JSON.stringify(notifications));
 }
 
-function randomVitals() {
+function randomVitals() {//random Vitals generator
     var SPO2 = 95 + Math.random() * 5;
     var Pulse = 60 + Math.random() * 40;
     var CO2 = 23 + Math. random() * 6;
@@ -317,11 +317,11 @@ function randomVitals() {
     return new vitals(ECG, SPO2, CO2, sysPressure, diaPressure, Pulse);
 }
 
-function uploadVitals() {
+function uploadVitals() {//updating vitals
     localStorage.setItem("vitalsDatabase", JSON.stringify(randomVitals()));
 }
 
-function checkVitals(){
+function checkVitals(){//checking vitals info
     var myVitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
     document.getElementById("SPO2").innerHTML = myVitals.SPO2;
     document.getElementById("Pulse").innerHTML = myVitals.Pulse;
@@ -331,14 +331,14 @@ function checkVitals(){
     document.getElementById("ECG").innerHTML = myVitals.ECG;
 }
 
-function saveVitals() {
+function saveVitals() {//saving vitals after manual changes
     var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
     currentPatient.vitals = JSON.parse(localStorage.getItem("vitalsDatabase"));
     localStorage.setItem("currentPatient", JSON.stringify(currentPatient));
     alert("Vitals have been saved.");
 }
 
-function saveChanges() {
+function saveChanges() {//saves any changes to currently viewed patient
     var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
     var name = currentPatient.name;
     var room = currentPatient.room;
@@ -352,7 +352,7 @@ function saveChanges() {
     currentPatient.ventilator.O2 = document.getElementById("oxPercent").value;
 
     var patientDatabase = JSON.parse(localStorage.getItem("patientDatabase"));
-
+    //iterate through database and sets new currentPatient information
     for(i = 0; i < patientDatabase.length; i++) {
         if(patientDatabase[i].name === name && patientDatabase[i].room === room) {
             patientDatabase[i] = currentPatient;
@@ -365,7 +365,7 @@ function saveChanges() {
     alert("Changes have been saved.");
 }
 
-function displayVitals() {
+function displayVitals() {//displays vitals output for vitals page
     var vitals = JSON.parse(localStorage.getItem("currentPatient")).vitals;
 
     document.getElementById("savedECG").innerHTML = vitals.ECG;
@@ -376,7 +376,7 @@ function displayVitals() {
     document.getElementById("savedPulse").innerHTML = vitals.Pulse;
 }
 
-function displayVentilator() {
+function displayVentilator() {//displays ventilator output for ventilator page
     var ventilator = JSON.parse(localStorage.getItem("currentPatient")).ventilator;
 
     document.getElementById("ventStatus").innerHTML = ventilator.isOn;
@@ -384,7 +384,7 @@ function displayVentilator() {
 }
 
 function displayPatientInfo() {
-    var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
+    var currentPatient = JSON.parse(localStorage.getItem("currentPatient"));//display patient information for patientpage
     
     document.getElementById("currentPatientName").value = currentPatient.name;
     document.getElementById("currentPatientRoom").value = currentPatient.room;
@@ -395,7 +395,8 @@ function displayPatientInfo() {
     displayVitals();
 }
 
-function toggleVentilator() {
+function toggleVentilator() {//ability to turn of ventilator and pull plug on doomed patients
+    //also ability to reallocate ventilators after person leaves the facility.
     if (document.getElementById("ventStatus").innerHTML == "OFF") {
         document.getElementById("ventStatus").innerHTML = "ON";
         JSON.parse(localStorage.getItem("currentPatient")).ventilator.isOn = true;
@@ -407,7 +408,7 @@ function toggleVentilator() {
     }
 }
 
-function searchPatientNavBar() {
+function searchPatientNavBar() {//function works to reinvent searchbar
     var input = document.getElementById("patientSearch").value;
     var patientDatabase = JSON.parse(localStorage.getItem("patientDatabase"));
     var isFound = false;
@@ -419,7 +420,7 @@ function searchPatientNavBar() {
         }
     }
 
-    if(!isFound) {
+    if(!isFound) {//fail case if name does not exist
         alert("No patient found under this name or room number.");
     }
 
@@ -428,7 +429,7 @@ function searchPatientNavBar() {
     }
 }
 
-function searchPatientMenu() {
+function searchPatientMenu() {//search menu formatted
     var input = document.getElementById("patientSearchMenu").value;
     var patientDatabase = JSON.parse(localStorage.getItem("patientDatabase"));
     var isFound = false;
@@ -440,7 +441,7 @@ function searchPatientMenu() {
         }
     }
 
-    if(!isFound) {
+    if(!isFound) {//fail case if name does not exist
         alert("No patient found under this name or room number.");
     }
 
