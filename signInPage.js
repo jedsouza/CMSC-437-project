@@ -74,7 +74,7 @@ function signInButton() {
 
     if(currentUser != null) {//success case
         console.log("signed in successfully.");
-        location.href = "main.html"; //replace with final location
+        location.href = "main.htm"; //replace with final location
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
     }
 
