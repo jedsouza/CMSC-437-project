@@ -1,0 +1,81 @@
+table {
+    font-size:30px;
+    min-width:430px;
+    margin:auto;
+}
+tr:nth-child(odd) {
+    background-color:#eeeeff;
+}
+td {
+    padding-left:10px;
+}
+
+.slider {
+    -webkit-appearance:none;
+    appearance:none;
+    height:25px;
+    width:100%;
+    background-color:#d6d6f3;
+    border-radius:25px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance:none;
+    appearance:none;
+    width:35px;
+    height:35px;
+    background-color:#6e6ebb;
+    border-radius:25px;
+}
+
+div.touch {
+    background-color:#eeeeff;
+    font-style:normal;
+    color:#6e6ebb;
+    border-style:solid;
+    border-color:#6e6ebb;
+    border-width:5px;
+    border-bottom-style:none;
+    border-top-style:none;
+}
+button.touch {
+    background-color:#eeeeff;
+    min-height:75px;
+    font-size:1.5em;
+    border-style:solid;
+    border-width:2px;
+    border-color:#6e6ebb;
+    border-radius:20px;
+    color:#6e6ebb;
+    width:95%;
+    margin:auto;
+}
+button.touch:hover {
+    background-color:#6e6ebb;
+    border-color:#6e6ebb;
+}
+
+.small-touch {
+    background-color:#eeeeff;
+    border-style:solid;
+    border-width:2px;
+    border-color:#6e6ebb;
+    border-radius:20px;
+    background-color:#6e6ebb;
+
+}
+
+.small-touch:hover {
+    background-color:#eeeeff;
+    border-color:#6e6ebb;
+    color:#6e6ebb;
+}
+
+.form-group {
+    margin-left:10px;
+    margin-right:10px;
+}
+
+nav {
+    background-color:#d6d6f3;
+}

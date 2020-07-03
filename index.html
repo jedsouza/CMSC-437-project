@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign in ICU intradepartmental</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="ss1.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="signInPage.js"></script>
+        <!--formatting for the sign-in page-->
+        <style>
+            body {
+                /*background-image: url("heart-rhythm-icon.jpg");*/
+                background-color:#a8a8d3;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center 1px;
+            }
+        </style>
+    </head>
+    <!--page to load in data on start-->
+    <body onload="initializeData()">
+        <!--basic username, password, show/hide password setup-->
+        <div class="container text-center" style="padding-top:25px;">
+            <div class="row p-4 rounded-top touch">
+                <div class="col-sm-4 text-right">
+                    <label><b>User Name: </b></label>
+                </div>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="user">
+                </div>
+            </div>
+            
+            <div class="row p-4 touch" style="border-bottom-left-radius:25px;border-bottom-right-radius:25px;border-bottom-style:solid;">
+                <div class="col-sm-4 text-right">
+                    <label><b>Password: </b></label>
+                </div>
+                <div class="col-sm-8">
+                    <!-- Password field -->
+                    <input type="password" class="form-control" id="pass">
+                    <input type="checkbox" onClick="hidePassword()" style="margin-top:20px;"> Show Password
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-primary small-touch" id="leButte" onclick="signInButton()">Sign In</button>
+            <div>
+                <img src="heart-rhythm-icon.jpg" alt="Hospital System" style="width:35%;margin-top:20px;margin-bottom:10px;border-radius:25px;">
+                <p style="color:#eeeeff;">Nathan Vanbourgondien, James D'Souza, Jonathon Wichers and Julia Nau</p>
+            </div>
+        </div>
+    </body>
+</html>

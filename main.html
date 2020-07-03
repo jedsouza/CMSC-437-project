@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="ss1.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -23,7 +24,7 @@
     <!--initialize data on every load-->
     <body onload="initializeData()">
       <!--functioning navbar that is collapsible, explanations of functionality in functions.js file-->
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <nav class="navbar navbar-expand-md navbar-light">
             <a class="navbar-brand" href="#">Navigation</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +61,7 @@
                     <a class="nav-link" onClick="addPatientPage()" href="#">Add Patient</a>
                 </li>
 
-                <li class="nav-item" id=addEmpLink">
+                <li class="nav-item" id="addEmpLink">
                     <a class="nav-link" onClick="addEmployeePage()" href="#">Add Employee</a>
                 </li>
 
@@ -73,13 +74,13 @@
                 </li>
 
                 <li class="nav-item" id="signOutLink">
-                    <a class="nav-link" href="signInPage.html">Sign Out</a>
+                    <a class="nav-link" href="index.html">Sign Out</a>
                 </li>
               </ul>
               <!--form for searching patients by name-->
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Patient Name or Room Number" aria-label="Search" id="patientSearch">
-                <button class="btn btn-primary my-2 my-sm-0" type="button" onclick="searchPatientNavBar()">Search</button>
+                <button class="btn btn-primary my-2 my-sm-0 small-touch" type="button" onclick="searchPatientNavBar()">Search</button>
               </form>
             </div>
           </nav>
@@ -89,15 +90,15 @@
         <div id="home" class="page">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="Patient Name or Room Number" aria-label="Search" id="patientSearchMenu">
-                <button class="btn btn-primary my-2 my-sm-0 mr-auto" type="button" onclick="searchPatientMenu()">Search</button>
+                <button class="btn btn-primary my-2 my-sm-0 mr-auto small-touch" type="button" onclick="searchPatientMenu()">Search</button>
             </form>
 
             <br>
             <!--adding patients-->
             <div>
-                <button class="btn btn-primary btn-block" type="button" onClick="addPatientPage()">Add Patient</button>
-                <button id="EmployeeButton" class="btn btn-primary btn-block" type="button"onClick="addEmployeePage()">Add Employee</button>
-                <a class="btn btn-primary btn-block" href="signInPage.html">Sign Out</a>
+                <button class="btn btn-primary btn-block touch" type="button" onClick="addPatientPage()">Add Patient</button>
+                <button id="EmployeeButton" class="btn btn-primary btn-block touch" type="button"onClick="addEmployeePage()">Add Employee</button>
+                <a class="btn btn-primary btn-block small-touch" style="width:20%;margin-left:auto; margin-right:auto;" href="index.html">Sign Out</a>
             </div>
         </div>
         <!--page for adding members-->
@@ -166,14 +167,15 @@
         </div>
 
         <div id="patientVitals" class="page">
-            <h1>Patient Vitals</h1>
+            <h1 style="text-align:center;">Patient Vitals</h1>
+            <br>
             <table>
               <tr>
                 <td><p>ECG:</p></td><td><p id="ECG"></p></td>
               </tr><tr>
                 <td><p>SPO2:</p><td><p id="SPO2"></p></td>
               </tr><tr>
-                <td><p>CO2:</p><td><p id="CO2"></p></td>
+               <td><p>CO2:</p><td><p id="CO2"></p></td>
               </tr><tr>
                 <td><p>Sys:</p><td><p id="sys"></p></td>
               </tr><tr>
@@ -185,20 +187,21 @@
         </div>
         <!--patient info can be found on either of the next pages depending on what is being searched for-->
         <div id="patientInfo" class="page">
-            <h1>Patient Info</h1>
-
+            <h1 style="text-align:center;">Patient Info</h1>
             <form>
-                <div class="form-group">
+              <div style="overflow:hidden;">
+                <div class="form-group" style="float:left;">
                   <label for="currentPatientName">Name</label>
                   <input type="name" class="form-control" id="currentPatientName">
                 </div>
 
-                <div class="form-group">
-                    <label for="currentPatientRoom">Name</label>
+                <div class="form-group" style="overflow:hidden;">
+                    <label for="currentPatientRoom">Room</label>
                     <input type="name" class="form-control" id="currentPatientRoom">
                   </div>
+              </div>
 
-                <div class="form-group">
+                <div class="form-group" style="margin-left:10px;margin-right:10px;">
                   <label for="patientStatus">Status</label>
                   <select class="form-control" id="currentPatientStatus">
                     <option>Stable</option>
@@ -218,7 +221,8 @@
                 </div>
             </form>
 
-            <h1>Saved Vitals</h1>
+            <h1 style="text-align:center;">Saved Vitals</h1>
+            <br>
             <table>
               <tr>
                 <td><p>ECG:</p></td><td><p id="savedECG"></p></td>
@@ -263,12 +267,13 @@
         </div>
 
         <div id="ventilatorSettings" class="page">
-            <h1>Ventilator Settings</h1>
-            <button class="btn btn-primary btn-block" type="button"onClick="toggleVentilator()">Toggle Ventilator</button>
-            <p style="text-align:center;">Ventilator is now <span id="ventStatus">OFF</span>.</p>
+            <h1 style="text-align:center;">Ventilator Settings</h1>
+            <br>
+            <button class="btn btn-primary btn-block touch" type="button"onClick="toggleVentilator()">Toggle Ventilator</button>
+            <p style="text-align:center;margin-top:10px;">Ventilator is now <span id="ventStatus">OFF</span>.</p>
             <br>
             <p style="text-align:center;font-size:larger;">Adjust oxygen percentage:</p>
-            <input type="range" min="1" max="100" value="50" class="slider" style="width:100%;height:25px;" id="oxPercent">
+            <div style="width:95%; margin:auto;"><input type="range" min="1" max="100" value="50" class="slider" id="oxPercent"></div>
         </div>
     </body>
 </html>
